@@ -1,0 +1,150 @@
+<style>
+#modal, #login, #register {
+  background: rgba(255, 0, 0, 0.5);
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+}
+#modal > .content, #login > .content, #register > .content {
+  width: 400px;
+  height: auto;
+  margin: 50px auto;
+      background: rgba(255,0,0, 0.8);
+      padding: 25px;
+      position: relative;
+      border-radius: 10px;
+}
+.divTop {
+  display: flex;
+  justify-content: space-between;
+}
+.divTopName, .divTopNameInput{
+width: 100%;
+max-width: 100%;
+}
+  .divExit {
+ width: 25px;
+ top: 5px;
+ right: 5px;
+ position: absolute;
+}
+#idExit {
+  background: transparent;
+border: 0px;
+cursor: pointer;
+}
+#login-form {
+  position: fixed;
+    right: 140px;
+    background: #c10003;
+    border-radius: 10px;
+    padding: 5px 20px;
+    color: white;
+    cursor: pointer;
+}
+#add-ticket-form {
+  position: fixed;
+    right: 20px;
+    background: #c10003;
+    border-radius: 10px;
+    padding: 5px 20px;
+    color: white;
+    cursor: pointer;
+}
+#buttonLogin, #idSave, #idDelete, #register-from, #buttonRegister{
+  cursor: pointer;
+  margin-top: 15px;
+  background: white;
+  color: rgba(255,0,0, 0.8);
+  border-radius: 5px;
+  padding: 5px 20px;
+  margin-right: 5px;
+}
+</style>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Ghibli App</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <div id="login-form">Login</div>
+  <div id="add-ticket-form">Add ticket</div>
+  <div id="root"></div>
+  <div id="modal" class="hidden">
+    <div class="content">
+      <div class="divTop">
+        <div class="divTopName">
+          <label>name</label>
+          <input type="text" class="divTopNameInput"  id="name"/>
+        </div>
+        <div class="divExit">
+          <button id='idExit'>x</buton>
+        </div>
+      </div>
+      <div class="divContent">
+        <label>Description</label>
+        <textarea rows="4" cols="50" type="textarea" class="divTopNameInput"  id="description"></textarea>
+      </div>
+      <div class="divFotter">
+        <button id='idSave'>Save</buton> <button id='idDelete'>Delete</buton>
+      </div>
+    </div>
+  </div>
+  <div id="login" class="hidden">
+    <div class="content">
+      <div class="divTop">
+        <div class="divTopName">
+          <label>email</label>
+          <input class="divTopNameInput" value='jan@gmail.com' type="text" id="logEmail"/>
+        </div>
+        <div class="divExit">
+          <button id='idExitLogin'>x</buton>
+        </div>
+      </div>
+      <div class="divContent">
+        <label>password</label>
+      <input class="divTopNameInput" value='123' type="password" id="logPassword"/>
+      </div>
+      <div class="divFotter">
+        <button id='buttonLogin'>Login</buton>
+        <button id='register-from'>Form register</buton>
+      </div>
+    </div>
+  </div>
+  <div id="register" class="hidden">
+    <div class="content">
+      <div class="divTop">
+        <div class="divTopName">
+          <label>name</label>
+          <input class="divTopNameInput" type="text" id="regName"/>
+        </div>
+        <div class="divExit">
+          <button id='idExitRegister'>x</buton>
+        </div>
+      </div>
+      <div class="divContent">
+        <label>email</label>
+        <input class="divTopNameInput" type="text" id="regEmail"/>
+        <label>password</label>
+      <input class="divTopNameInput" type="password" id="regPassword"/>
+      </div>
+      <div class="divFotter">
+        <button id='buttonRegister'>Register</buton>
+      </div>
+    </div>
+  </div>
+  <script src="scripts.js"></script>
+</body>
+
+</html>
