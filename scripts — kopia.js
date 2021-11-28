@@ -1,5 +1,4 @@
 var tokenLogin = '';
-var url ='http://localhost:8000';
 const app = document.getElementById('root');
 
 const logo = document.createElement('img');
@@ -18,7 +17,7 @@ function load() {
   app.appendChild(container);
 
   var request = new XMLHttpRequest();
-  request.open('GET', `${url}/api/get-ticket`, true);
+  request.open('GET', 'http://localhost:8000/api/get-ticket', true);
   request.onload = function() {
     // Begin accessing JSON data here
     var data = JSON.parse(this.response);
@@ -58,7 +57,7 @@ function load() {
 
   function getTicket(idTicket) {
     var requestGetTicket = new XMLHttpRequest();
-    requestGetTicket.open('GET', `${url}/api/ticket/${idTicket}`, true);
+    requestGetTicket.open('GET', `http://localhost:8000/api/ticket/${idTicket}`, true);
     requestGetTicket.onload = function() {
       // alert(requestGetTicket.status);
       var ticketGet = JSON.parse(this.response);
@@ -83,8 +82,9 @@ function Update() {
   data.description = document.querySelector('#description').value;
   var json = JSON.stringify(data);
   let idTicket = document.querySelector('#idSave').getAttribute('data-send-id');
+  // http://localhost:8000/api/ticket/1
   var requestUpdateTicket = new XMLHttpRequest();
-  requestUpdateTicket.open('PUT', `${url}/api/ticket/${idTicket}`, true);
+  requestUpdateTicket.open('PUT', `http://localhost:8000/api/ticket/${idTicket}`, true);
   requestUpdateTicket.setRequestHeader('Content-type', 'application/json; charset=utf-8');
   requestUpdateTicket.setRequestHeader("Authorization", `Bearer ${tokenLogin}`);
   requestUpdateTicket.send(json);
@@ -112,7 +112,7 @@ function Create() {
   data.description = document.querySelector('#description').value;
   var json = JSON.stringify(data);
   var requestUpdateTicket = new XMLHttpRequest();
-  requestUpdateTicket.open('POST', `${url}/api/post-ticket`, true);
+  requestUpdateTicket.open('POST', `http://localhost:8000/api/post-ticket`, true);
   requestUpdateTicket.setRequestHeader('Content-type', 'application/json; charset=utf-8');
   requestUpdateTicket.setRequestHeader("Authorization", `Bearer ${tokenLogin}`);
   requestUpdateTicket.send(json);
@@ -145,8 +145,9 @@ function Create() {
 function Delete() {
   var data = {};
   let idTicket = document.querySelector('#idDelete').getAttribute('data-delete-id');
+  // http://localhost:8000/api/ticket/1
   var requestDeleteTicket = new XMLHttpRequest();
-  requestDeleteTicket.open('Delete', `${url}/api/ticket/${idTicket}`, true);
+  requestDeleteTicket.open('Delete', `http://localhost:8000/api/ticket/${idTicket}`, true);
   requestDeleteTicket.setRequestHeader('Content-type', 'application/json; charset=utf-8');
   requestDeleteTicket.setRequestHeader("Authorization", `Bearer ${tokenLogin}`);
   requestDeleteTicket.send(null);
@@ -192,7 +193,7 @@ function logToken() {
   data.password = document.querySelector('#logPassword').value;
   var json = JSON.stringify(data);
   var requestLogin = new XMLHttpRequest();
-  requestLogin.open('POST', `${url}/api/login`, true);
+  requestLogin.open('POST', `http://localhost:8000/api/login`, true);
   requestLogin.setRequestHeader('Content-type', 'application/json; charset=utf-8');
   requestLogin.send(json);
   requestLogin.onload = function() {
@@ -237,7 +238,7 @@ function registerToken() {
   data.password_confirmation = document.querySelector('#regPassword').value;
   var json = JSON.stringify(data);
   var requestRegister = new XMLHttpRequest();
-  requestRegister.open('POST', `${url}/api/register`, true);
+  requestRegister.open('POST', `http://localhost:8000/api/register`, true);
   requestRegister.setRequestHeader('Content-type', 'application/json; charset=utf-8');
   requestRegister.send(json);
   requestRegister.onload = function() {
